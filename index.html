@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo inmobiliaria para promocionar propiedades, apartamentos y PH.">
+  <title>Altamar Residence | Propiedad en venta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header" id="inicio">
+    <a href="#inicio" class="brand" aria-label="Inicio">
+      <span class="brand-mark">A</span>
+      <span>
+        <strong>ALTAMAR</strong>
+        <small>Real Estate</small>
+      </span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#propiedad">Propiedad</a>
+      <a href="#galeria">Galería</a>
+      <a href="#video">Video</a>
+      <a href="#amenidades">Amenidades</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="eyebrow">PROPIEDAD EN VENTA</span>
+        <h1>PH Altamar Residence</h1>
+        <p class="hero-location">Costa del Este · Ciudad de Panamá</p>
+        <p class="hero-price">$275,000</p>
+        <p class="hero-copy">Tu próxima inversión puede comenzar aquí.</p>
+
+        <div class="hero-actions">
+          <a href="#propiedad" class="btn btn-light">Ver propiedad</a>
+          <a href="https://wa.me/50760000000?text=Hola%2C%20estoy%20interesado%20en%20PH%20Altamar%20Residence" target="_blank" class="btn btn-outline">Hablar por WhatsApp</a>
+        </div>
+      </div>
+
+      <a href="#propiedad" class="scroll-cue" aria-label="Bajar">
+        <span>Explorar</span>
+        <span class="arrow">↓</span>
+      </a>
+    </section>
+
+    <section class="quick-stats" aria-label="Resumen de propiedad">
+      <article><strong>3</strong><span>Habitaciones</span></article>
+      <article><strong>2</strong><span>Baños</span></article>
+      <article><strong>125 m²</strong><span>Área total</span></article>
+      <article><strong>2</strong><span>Estacionamientos</span></article>
+      <article><strong>18</strong><span>Piso</span></article>
+    </section>
+
+    <section class="section intro-section" id="propiedad">
+      <div class="section-inner two-col">
+        <div class="intro-copy">
+          <span class="section-kicker">UNA OPORTUNIDAD PARA VIVIR E INVERTIR</span>
+          <h2>Espacios que se sienten bien desde que entras.</h2>
+          <p>
+            Descubre un apartamento moderno, amplio y luminoso en una de las zonas con mayor
+            desarrollo de la ciudad. Una propiedad diseñada para combinar comodidad, ubicación y
+            valor a largo plazo.
+          </p>
+          <p>
+            Ideal para quienes buscan su próximo hogar o una alternativa de inversión con una
+            ubicación estratégica, acabados contemporáneos y amenidades pensadas para el día a día.
+          </p>
+          <blockquote>“Esta puede ser tu mejor opción de inversión.”</blockquote>
+        </div>
+
+        <aside class="property-card">
+          <div class="card-header">
+            <span>Ficha de propiedad</span>
+            <span class="status">Disponible</span>
+          </div>
+
+          <div class="details-grid">
+            <div><span>Tipo</span><strong>Apartamento / PH</strong></div>
+            <div><span>Precio</span><strong>$275,000</strong></div>
+            <div><span>Ubicación</span><strong>Costa del Este</strong></div>
+            <div><span>Metraje</span><strong>125 m²</strong></div>
+            <div><span>Habitaciones</span><strong>3</strong></div>
+            <div><span>Baños</span><strong>2</strong></div>
+            <div><span>Estacionamientos</span><strong>2</strong></div>
+            <div><span>Mantenimiento</span><strong>$220 / mes</strong></div>
+          </div>
+
+          <a href="#contacto" class="btn btn-dark full">Solicitar información</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">GALERÍA</span>
+            <h2>Conoce cada espacio.</h2>
+          </div>
+          <p>Haz clic en una imagen para verla en grande.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <button class="gallery-item gallery-large" data-img="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85" alt="Sala principal del apartamento">
+          </button>
+          <button class="gallery-item" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" alt="Vista de sala moderna">
+          </button>
+          <button class="gallery-item" data-img="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=85">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="Cocina moderna">
+          </button>
+          <button class="gallery-item" data-img="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1800&q=85">
+            <img src="https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=900&q=85" alt="Habitación">
+          </button>
+          <button class="gallery-item" data-img="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="Área social">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="investment-banner">
+      <div class="investment-bg"></div>
+      <div class="investment-overlay"></div>
+      <div class="investment-content">
+        <span>UNA PROPIEDAD. UNA OPORTUNIDAD.</span>
+        <h2>Invierte en un espacio con ubicación, comodidad y proyección.</h2>
+        <a href="#contacto" class="btn btn-light">Quiero conocerla</a>
+      </div>
+    </section>
+
+    <section class="section video-section" id="video">
+      <div class="section-inner video-layout">
+        <div>
+          <span class="section-kicker">RECORRIDO EN VIDEO</span>
+          <h2>Imagínate viviendo aquí.</h2>
+          <p>
+            El cliente podrá proporcionar su video publicitario y colocarlo directamente en esta
+            sección para mostrar recorridos, detalles, acabados y amenidades de la propiedad.
+          </p>
+          <p class="note">En la versión final solo se reemplaza el archivo de video.</p>
+        </div>
+
+        <div class="video-card">
+          <video controls preload="metadata" poster="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85">
+            <source src="video/propiedad.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+          <div class="video-placeholder">
+            <span>🎬</span>
+            <strong>Video del cliente</strong>
+            <small>Coloca el archivo como video/propiedad.mp4</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section amenities-section" id="amenidades">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">CARACTERÍSTICAS Y AMENIDADES</span>
+            <h2>Todo lo que suma valor.</h2>
+          </div>
+          <p>Los detalles se pueden adaptar a cada propiedad.</p>
+        </div>
+
+        <div class="amenities-grid">
+          <article><span>🏊</span><h3>Piscina</h3><p>Área de piscina para adultos y niños.</p></article>
+          <article><span>🏋️</span><h3>Gimnasio</h3><p>Espacio equipado para entrenamiento.</p></article>
+          <article><span>🛡️</span><h3>Seguridad 24/7</h3><p>Control de acceso y vigilancia.</p></article>
+          <article><span>🌇</span><h3>Balcón</h3><p>Vista abierta y excelente iluminación.</p></article>
+          <article><span>🛗</span><h3>Elevadores</h3><p>Acceso cómodo a todos los niveles.</p></article>
+          <article><span>🎉</span><h3>Área social</h3><p>Espacios para reuniones y actividades.</p></article>
+          <article><span>🚗</span><h3>2 estacionamientos</h3><p>Espacios privados incluidos.</p></article>
+          <article><span>🌬️</span><h3>Aire acondicionado</h3><p>Preparación para climatización completa.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section location-section" id="ubicacion">
+      <div class="section-inner location-layout">
+        <div class="location-copy">
+          <span class="section-kicker">UBICACIÓN</span>
+          <h2>Conectado con lo que necesitas.</h2>
+          <p>
+            Costa del Este ofrece acceso rápido a servicios, comercios, restaurantes, escuelas y
+            principales vías de la ciudad.
+          </p>
+
+          <div class="nearby-list">
+            <div><strong>5 min</strong><span>Supermercados</span></div>
+            <div><strong>8 min</strong><span>Centros comerciales</span></div>
+            <div><strong>10 min</strong><span>Corredor Sur</span></div>
+            <div><strong>15 min</strong><span>Distrito financiero</span></div>
+          </div>
+
+          <a href="https://maps.google.com/?q=Costa+del+Este+Panama" target="_blank" class="text-link">Abrir ubicación en Google Maps →</a>
+        </div>
+
+        <div class="map-wrap">
+          <iframe
+            title="Mapa de ubicación"
+            src="https://www.google.com/maps?q=Costa%20del%20Este%20Panama&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sale-section">
+      <div class="section-inner sale-card">
+        <div>
+          <span class="section-kicker">PRECIO DE VENTA</span>
+          <h2>$275,000</h2>
+          <p>Agenda una visita o solicita información sobre disponibilidad y condiciones.</p>
+        </div>
+        <div class="sale-actions">
+          <a href="https://wa.me/50760000000?text=Hola%2C%20estoy%20interesado%20en%20PH%20Altamar%20Residence" target="_blank" class="btn btn-dark">Consultar por WhatsApp</a>
+          <a href="#contacto" class="btn btn-soft">Ver contacto</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contacto">
+      <div class="section-inner contact-layout">
+        <div class="contact-copy">
+          <span class="section-kicker">CONTACTO</span>
+          <h2>¿Listo para dar el siguiente paso?</h2>
+          <p>
+            Esta propiedad puede ser la oportunidad que estabas buscando. Contáctanos para recibir
+            más información o coordinar una visita.
+          </p>
+        </div>
+
+        <div class="contact-cards">
+          <a href="https://wa.me/50760000000?text=Hola%2C%20estoy%20interesado%20en%20PH%20Altamar%20Residence" target="_blank" class="contact-card">
+            <span class="contact-icon">💬</span>
+            <span><small>WhatsApp</small><strong>+507 6000-0000</strong></span>
+            <span>→</span>
+          </a>
+
+          <a href="tel:+50760000000" class="contact-card">
+            <span class="contact-icon">📞</span>
+            <span><small>Teléfono</small><strong>+507 6000-0000</strong></span>
+            <span>→</span>
+          </a>
+
+          <a href="mailto:ventas@altamarrealestate.com?subject=Inter%C3%A9s%20en%20PH%20Altamar%20Residence" class="contact-card">
+            <span class="contact-icon">✉️</span>
+            <span><small>Correo</small><strong>ventas@altamarrealestate.com</strong></span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="qr-section">
+      <div class="section-inner qr-card">
+        <div>
+          <span class="section-kicker">CÓDIGO QR</span>
+          <h2>Escanea y abre el anuncio.</h2>
+          <p>
+            Para la entrega final, el QR debe generarse con la URL publicada en Netlify o con el
+            dominio definitivo del cliente.
+          </p>
+        </div>
+        <img src="assets/qr-demo.png" alt="Código QR de demostración">
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="brand footer-brand">
+        <span class="brand-mark">A</span>
+        <span><strong>ALTAMAR</strong><small>Real Estate</small></span>
+      </div>
+      <p>Propiedades seleccionadas para vivir, invertir y crecer.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#propiedad">Propiedad</a>
+      <a href="#galeria">Galería</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Altamar Real Estate. Demo comercial.</span>
+      <span>Diseño responsive para móvil, tablet y escritorio.</span>
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/50760000000?text=Hola%2C%20estoy%20interesado%20en%20PH%20Altamar%20Residence"
+    target="_blank"
+    class="whatsapp-float"
+    aria-label="Contactar por WhatsApp">
+    <span>WA</span>
+  </a>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button>
+    <img id="lightboxImg" src="" alt="Vista ampliada de la propiedad">
+  </div>
+
+
+  <div class="mobile-contact-bar" aria-label="Contacto rápido">
+    <a href="tel:+50760000000" class="mobile-call">Llamar</a>
+    <a href="https://wa.me/50760000000?text=Hola%2C%20estoy%20interesado%20en%20PH%20Altamar%20Residence" target="_blank" class="mobile-wa">WhatsApp</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
