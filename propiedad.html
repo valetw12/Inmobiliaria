@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Propiedad | Altamar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <a class="brand" href="index.html">
+
+            <span class="brand-mark">
+                A
+            </span>
+
+            <span>
+                <strong>ALTAMAR</strong>
+                <small>Real Estate</small>
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Menú"
+        >
+            ☰
+        </button>
+
+
+        <nav class="nav" id="nav">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="index.html#categorias">
+                Propiedades
+            </a>
+
+            <a href="publica.html">
+                Publica tu propiedad
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO DE LA PROPIEDAD
+    ========================================== -->
+
+    <main id="propertyMain"></main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="inner">
+
+            <div class="brand">
+
+                <span class="brand-mark">
+                    A
+                </span>
+
+                <span>
+                    <strong>ALTAMAR</strong>
+                    <small>Real Estate</small>
+                </span>
+
+            </div>
+
+
+            <p>
+                Demo comercial ·
+                <span id="year"></span>
+                · Venta, alquiler y promoción de propiedades.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         DATOS DE PROPIEDADES
+    ========================================== -->
+
+    <script src="js/propiedades.js"></script>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* ========================================
+           OBTENER ID DE LA PROPIEDAD
+        ======================================== */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const id =
+            params.get('id');
+
+
+        /* ========================================
+           BUSCAR PROPIEDAD
+        ======================================== */
+
+        const propiedad =
+            PROPIEDADES.find(
+                item => item.id === id
+            );
+
+
+        const propertyMain =
+            document.getElementById('propertyMain');
+
+
+        /* ========================================
+           PROPIEDAD NO ENCONTRADA
+        ======================================== */
+
+        if (!propiedad) {
+
+            document.title =
+                'Propiedad no encontrada | Altamar';
+
+            propertyMain.innerHTML = `
+
+                <section class="section">
+
+                    <div
+                        class="inner"
+                        style="
+                            min-height: 60vh;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                        "
+                    >
+
+                        <span class="kicker">
+                            ALTAMAR REAL ESTATE
+                        </span>
+
+                        <h1
+                            style="
+                                margin-top: 10px;
+                                margin-bottom: 18px;
+                            "
+                        >
+                            Propiedad no encontrada.
+                        </h1>
+
+                        <p class="lead">
+                            La propiedad que buscas no existe
+                            o el enlace ya no es válido.
+                        </p>
+
+                        <div class="actions">
+
+                            <a
+                                class="btn btn-dark"
+                                href="index.html#categorias"
+                            >
+                                Explorar propiedades
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            `;
+
+        } else {
+
+
+            /* ========================================
+               TÍTULO DEL NAVEGADOR
+            ======================================== */
+
+            document.title =
+                propiedad.nombre + ' | Altamar';
+
+
+            /* ========================================
+               ESTADO
+            ======================================== */
+
+            const estadoTexto =
+                propiedad.disponible
+                    ? 'Disponible'
+                    : 'No disponible';
+
+
+            /* ========================================
+               GALERÍA
+            ======================================== */
+
+            const galeria = [
+
+                propiedad.imagen,
+
+                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
+
+                'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85',
+
+                'https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=85',
+
+                'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85'
+
+            ];
+
+
+            /* ========================================
+               PROPIEDADES SIMILARES DISPONIBLES
+            ======================================== */
+
+            const similaresMismaCategoria =
+                PROPIEDADES.filter(
+                    item =>
+                        item.id !== propiedad.id &&
+                        item.categoria === propiedad.categoria &&
+                        item.disponible === true
+                );
+
+
+            const otrasPropiedades =
+                PROPIEDADES.filter(
+                    item =>
+                        item.id !== propiedad.id &&
+                        item.categoria !== propiedad.categoria &&
+                        item.disponible === true
+                );
+
+
+            const propiedadesSimilares = [
+                ...similaresMismaCategoria,
+                ...otrasPropiedades
+            ].slice(0, 3);
+
+
+            /* ========================================
+               CREAR TARJETA
+            ======================================== */
+
+            function crearTarjeta(item) {
+
+                return `
+
+                    <a
+                        class="property-card"
+                        href="propiedad.html?id=${item.id}"
+                    >
+
+                        <img
+                            src="${item.imagen}"
+                            alt="${item.nombre}"
+                            loading="lazy"
+                        >
+
+
+                        <div class="property-body">
+
+                            <span class="status">
+                                ● Disponible
+                            </span>
+
+
+                            <p class="meta">
+                                ${item.categoria}
+                                ·
+                                ${item.ubicacion}
+                            </p>
+
+
+                            <h3>
+                                ${item.nombre}
+                            </h3>
+
+
+                            <p class="price">
+                                ${item.precio}
+                            </p>
+
+
+                            <strong>
+                                Ver propiedad →
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+                `;
+
+            }
+
+
+            /* ========================================
+               CREAR PÁGINA
+            ======================================== */
+
+            propertyMain.innerHTML = `
+
+
+                <!-- =================================
+                     HERO
+                ================================== -->
+
+                <section
+                    class="hero detail-hero"
+                    style="
+                        background-image:
+                        url('${propiedad.imagen}');
+                    "
+                >
+
+                    <div class="hero-content">
+
+                        <span class="eyebrow">
+
+                            ${propiedad.operacion.toUpperCase()}
+                            ·
+                            ${propiedad.categoria.toUpperCase()}
+
+                        </span>
+
+
+                        <h1>
+                            ${propiedad.nombre}
+                        </h1>
+
+
+                        <p>
+                            ${propiedad.ubicacion}
+                        </p>
+
+
+                        <p
+                            style="
+                                font-size: 30px;
+                                font-weight: 700;
+                                margin-top: 14px;
+                            "
+                        >
+                            ${propiedad.precio}
+                        </p>
+
+
+                        <div class="actions">
+
+                            <a
+                                class="btn btn-light"
+                                href="#detalle"
+                            >
+                                Ver detalles
+                            </a>
+
+
+                            <a
+                                class="btn btn-outline"
+                                href="index.html#categorias"
+                            >
+                                Explorar categorías
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     ESTADÍSTICAS
+                ================================== -->
+
+                <section class="stats">
+
+                    <div>
+
+                        <strong>
+                            ${propiedad.habitaciones}
+                        </strong>
+
+                        <span>
+                            Habitaciones
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ${propiedad.banos}
+                        </strong>
+
+                        <span>
+                            Baños
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ${propiedad.area}
+                        </strong>
+
+                        <span>
+                            Área
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ${propiedad.parking}
+                        </strong>
+
+                        <span>
+                            Estacionamientos
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong
+                            style="
+                                color:
+                                ${propiedad.disponible
+                                    ? 'var(--green)'
+                                    : '#8b3a3a'};
+                            "
+                        >
+                            ${estadoTexto}
+                        </strong>
+
+                        <span>
+                            Estado actual
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     DETALLES
+                ================================== -->
+
+                <section
+                    class="section"
+                    id="detalle"
+                >
+
+                    <div class="inner two-col">
+
+
+                        <!-- DESCRIPCIÓN -->
+
+                        <div>
+
+                            <span class="kicker">
+                                UNA OPORTUNIDAD PARA DESCUBRIR
+                            </span>
+
+
+                            <h2>
+                                ${propiedad.nombre}
+                            </h2>
+
+
+                            <p class="lead">
+
+                                Propiedad de demostración preparada
+                                para sustituir por la información real
+                                del cliente.
+
+                                La estructura admite descripción,
+                                condiciones, características,
+                                amenidades y detalles específicos
+                                según sea apartamento, alquiler
+                                temporal o terreno.
+
+                            </p>
+
+
+                            <div
+                                class="chips"
+                                style="margin-top: 25px;"
+                            >
+
+                                <span class="chip">
+                                    ${propiedad.categoria}
+                                </span>
+
+
+                                <span class="chip">
+                                    ${propiedad.operacion}
+                                </span>
+
+
+                                <span class="chip">
+                                    ${propiedad.area}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FICHA RÁPIDA -->
+
+                        <div class="form-card">
+
+                            <span class="status">
+                                ● ${estadoTexto}
+                            </span>
+
+
+                            <h3
+                                style="
+                                    font-family: 'Playfair Display';
+                                    font-size: 30px;
+                                    margin: 16px 0;
+                                "
+                            >
+                                Ficha rápida
+                            </h3>
+
+
+                            <p>
+                                <strong>Ubicación:</strong>
+                                ${propiedad.ubicacion}
+                            </p>
+
+
+                            <p>
+                                <strong>Precio:</strong>
+                                ${propiedad.precio}
+                            </p>
+
+
+                            <p>
+                                <strong>Área:</strong>
+                                ${propiedad.area}
+                            </p>
+
+
+                            <p>
+                                <strong>Habitaciones:</strong>
+                                ${propiedad.habitaciones}
+                            </p>
+
+
+                            <p>
+                                <strong>Baños:</strong>
+                                ${propiedad.banos}
+                            </p>
+
+
+                            <p>
+                                <strong>Estacionamientos:</strong>
+                                ${propiedad.parking}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     GALERÍA
+                ================================== -->
+
+                <section
+                    class="section"
+                    style="background: white;"
+                >
+
+                    <div class="inner">
+
+                        <span class="kicker">
+                            GALERÍA
+                        </span>
+
+
+                        <h2>
+                            Conoce cada espacio.
+                        </h2>
+
+
+                        <div class="gallery">
+
+                            ${galeria.map(imagen => `
+
+                                <img
+                                    src="${imagen}"
+                                    alt="${propiedad.nombre}"
+                                    loading="lazy"
+                                >
+
+                            `).join('')}
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     UBICACIÓN + QR
+                ================================== -->
+
+                <section class="section">
+
+                    <div class="inner two-col">
+
+
+                        <!-- UBICACIÓN -->
+
+                        <div>
+
+                            <span class="kicker">
+                                UBICACIÓN
+                            </span>
+
+
+                            <h2>
+                                ${propiedad.ubicacion}
+                            </h2>
+
+
+                            <p class="lead">
+
+                                En la versión final se coloca
+                                el mapa y las referencias reales
+                                correspondientes a esta propiedad.
+
+                            </p>
+
+
+                            <iframe
+                                title="Mapa de ${propiedad.nombre}"
+                                src="https://www.google.com/maps?q=Panama&output=embed"
+                                style="
+                                    width: 100%;
+                                    height: 330px;
+                                    border: 0;
+                                    margin-top: 25px;
+                                "
+                                loading="lazy"
+                            ></iframe>
+
+                        </div>
+
+
+                        <!-- QR -->
+
+                        <div>
+
+                            <span class="kicker">
+                                CÓDIGO QR INDIVIDUAL
+                            </span>
+
+
+                            <h2>
+                                Comparte esta propiedad.
+                            </h2>
+
+
+                            <div class="qr-box">
+
+                                <img
+                                    src="assets/qr/${propiedad.id}.png"
+                                    alt="QR ${propiedad.nombre}"
+                                >
+
+
+                                <div>
+
+                                    <p>
+                                        Este código QR abre directamente
+                                        la ficha de esta propiedad.
+                                    </p>
+
+
+                                    <a
+                                        class="btn btn-dark"
+                                        style="margin-top: 16px;"
+                                        href="assets/qr/${propiedad.id}.png"
+                                        download="QR-${propiedad.id}.png"
+                                    >
+                                        Descargar QR
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     SOLICITAR INFORMACIÓN
+                ================================== -->
+
+                <section
+                    class="section"
+                    style="background: #eee8df;"
+                >
+
+                    <div class="inner two-col">
+
+
+                        <!-- TEXTO -->
+
+                        <div>
+
+                            <span class="kicker">
+                                SOLICITAR INFORMACIÓN
+                            </span>
+
+
+                            <h2>
+                                ¿Te interesa esta propiedad?
+                            </h2>
+
+
+                            <p class="lead">
+
+                                Déjanos tus datos.
+                                El asesor recibe la solicitud
+                                de forma privada.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- FORMULARIO -->
+
+                        <form
+                            class="form-card"
+                            name="consulta-propiedad"
+                            method="POST"
+                            data-netlify="true"
+                        >
+
+                            <input
+                                type="hidden"
+                                name="form-name"
+                                value="consulta-propiedad"
+                            >
+
+
+                            <input
+                                type="hidden"
+                                name="propiedad"
+                                value="${propiedad.nombre}"
+                            >
+
+
+                            <div class="form-grid">
+
+
+                                <div class="field">
+
+                                    <label for="nombre">
+                                        Nombre
+                                    </label>
+
+
+                                    <input
+                                        id="nombre"
+                                        name="nombre"
+                                        type="text"
+                                        autocomplete="name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="field">
+
+                                    <label for="telefono">
+                                        Teléfono / WhatsApp
+                                    </label>
+
+
+                                    <input
+                                        id="telefono"
+                                        name="telefono"
+                                        type="tel"
+                                        autocomplete="tel"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="field full">
+
+                                    <label for="mensaje">
+                                        Mensaje
+                                    </label>
+
+
+                                    <textarea
+                                        id="mensaje"
+                                        name="mensaje"
+                                    >Me interesa ${propiedad.nombre}.</textarea>
+
+                                </div>
+
+
+                                <div class="field full">
+
+                                    <button
+                                        class="btn btn-dark"
+                                        type="submit"
+                                    >
+                                        Enviar consulta
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     PROPIEDADES SIMILARES
+                ================================== -->
+
+                <section class="section similar">
+
+                    <div class="inner">
+
+                        <span class="kicker">
+                            SIGUE EXPLORANDO
+                        </span>
+
+
+                        <h2>
+                            Otras propiedades.
+                        </h2>
+
+
+                        ${
+                            propiedadesSimilares.length > 0
+
+                                ? `
+
+                                    <div class="property-grid">
+
+                                        ${propiedadesSimilares
+                                            .map(crearTarjeta)
+                                            .join('')}
+
+                                    </div>
+
+                                `
+
+                                : `
+
+                                    <div class="empty">
+
+                                        <strong>
+                                            No hay otras propiedades
+                                            disponibles por el momento.
+                                        </strong>
+
+                                    </div>
+
+                                `
+                        }
+
+
+                        <div class="actions">
+
+                            <a
+                                class="btn btn-dark"
+                                href="index.html#categorias"
+                            >
+                                Ver todas las categorías
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            `;
+
+        }
+
+
+        /* ========================================
+           MENÚ MÓVIL
+        ======================================== */
+
+        const menuBtn =
+            document.getElementById('menuBtn');
+
+        const nav =
+            document.getElementById('nav');
+
+
+        if (menuBtn && nav) {
+
+            menuBtn.addEventListener(
+                'click',
+                () => {
+
+                    nav.classList.toggle('open');
+
+                }
+            );
+
+        }
+
+
+        /* ========================================
+           AÑO AUTOMÁTICO
+        ======================================== */
+
+        const year =
+            document.getElementById('year');
+
+
+        if (year) {
+
+            year.textContent =
+                new Date().getFullYear();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

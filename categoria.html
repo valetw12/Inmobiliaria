@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Categoría | Altamar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <a class="brand" href="index.html">
+
+            <span class="brand-mark">
+                A
+            </span>
+
+            <span>
+                <strong>ALTAMAR</strong>
+                <small>Real Estate</small>
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Menú"
+        >
+            ☰
+        </button>
+
+
+        <nav class="nav" id="nav">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="index.html#categorias">
+                Propiedades
+            </a>
+
+            <a href="publica.html">
+                Publica tu propiedad
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             ENCABEZADO DE LA CATEGORÍA
+        ====================================== -->
+
+        <section class="page-head">
+
+            <div class="inner">
+
+                <a
+                    class="back-link"
+                    href="index.html#categorias"
+                >
+                    ← Todas las categorías
+                </a>
+
+
+                <span class="kicker">
+                    PROPIEDADES
+                </span>
+
+
+                <h1
+                    class="page-title"
+                    id="categoryTitle"
+                >
+                    Categoría
+                </h1>
+
+
+                <p
+                    class="lead"
+                    id="categoryLead"
+                >
+                    Explora las propiedades disponibles.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PROPIEDADES
+        ====================================== -->
+
+        <section class="section">
+
+            <div class="inner">
+
+
+                <!-- =================================
+                     FILTRO POR PROVINCIA
+                ================================== -->
+
+                <div class="province-filter">
+
+                    <div class="province-filter-info">
+
+                        <span class="province-filter-icon">
+                            📍
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Filtrar por provincia
+                            </strong>
+
+                            <small>
+                                Encuentra propiedades según su ubicación.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="province-filter-control">
+
+                        <label
+                            for="provinceSelect"
+                            class="sr-only"
+                        >
+                            Seleccionar provincia
+                        </label>
+
+
+                        <select id="provinceSelect">
+
+                            <option value="Todas">
+                                Todas las provincias
+                            </option>
+
+                            <option value="Bocas del Toro">
+                                Bocas del Toro
+                            </option>
+
+                            <option value="Coclé">
+                                Coclé
+                            </option>
+
+                            <option value="Colón">
+                                Colón
+                            </option>
+
+                            <option value="Chiriquí">
+                                Chiriquí
+                            </option>
+
+                            <option value="Darién">
+                                Darién
+                            </option>
+
+                            <option value="Herrera">
+                                Herrera
+                            </option>
+
+                            <option value="Los Santos">
+                                Los Santos
+                            </option>
+
+                            <option value="Panamá">
+                                Panamá
+                            </option>
+
+                            <option value="Panamá Oeste">
+                                Panamá Oeste
+                            </option>
+
+                            <option value="Veraguas">
+                                Veraguas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     RESULTADO DEL FILTRO
+                ================================== -->
+
+                <div
+                    class="filter-result"
+                    id="filterResult"
+                ></div>
+
+
+                <!-- =================================
+                     TARJETAS
+                ================================== -->
+
+                <div
+                    class="property-grid"
+                    id="grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="inner">
+
+            <div class="brand">
+
+                <span class="brand-mark">
+                    A
+                </span>
+
+                <span>
+                    <strong>ALTAMAR</strong>
+                    <small>Real Estate</small>
+                </span>
+
+            </div>
+
+
+            <p>
+                Demo comercial ·
+                <span id="year"></span>
+                · Venta, alquiler y promoción de propiedades.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         DATOS DE LAS PROPIEDADES
+    ========================================== -->
+
+    <script src="js/propiedades.js"></script>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* ========================================
+           OBTENER CATEGORÍA
+        ======================================== */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+
+        const active =
+            params.get('categoria') || 'Apartamentos';
+
+
+        /* ========================================
+           TÍTULO
+        ======================================== */
+
+        document.title =
+            active + ' | Altamar';
+
+
+        document.getElementById(
+            'categoryTitle'
+        ).textContent = active;
+
+
+        document.getElementById(
+            'categoryLead'
+        ).textContent =
+            'Propiedades disponibles en ' + active + '.';
+
+
+        /* ========================================
+           ELEMENTOS
+        ======================================== */
+
+        const grid =
+            document.getElementById('grid');
+
+
+        const provinceSelect =
+            document.getElementById(
+                'provinceSelect'
+            );
+
+
+        const filterResult =
+            document.getElementById(
+                'filterResult'
+            );
+
+
+        /* ========================================
+           PROPIEDADES DISPONIBLES
+           DE LA CATEGORÍA
+        ======================================== */
+
+        const propiedadesCategoria =
+            PROPIEDADES.filter(
+                propiedad =>
+                    propiedad.categoria === active &&
+                    propiedad.disponible === true
+            );
+
+
+        /* ========================================
+           CREAR TARJETA
+        ======================================== */
+
+        function crearTarjeta(propiedad) {
+
+            return `
+
+                <a
+                    class="property-card"
+                    href="propiedad.html?id=${propiedad.id}"
+                >
+
+                    <img
+                        src="${propiedad.imagen}"
+                        alt="${propiedad.nombre}"
+                        loading="lazy"
+                    >
+
+
+                    <div class="property-body">
+
+                        <span class="status">
+                            ● Disponible
+                        </span>
+
+
+                        <p class="meta">
+                            ${propiedad.ubicacion}
+                        </p>
+
+
+                        <h3>
+                            ${propiedad.nombre}
+                        </h3>
+
+
+                        <p class="price">
+                            ${propiedad.precio}
+                        </p>
+
+
+                        <div class="chips">
+
+                            <span class="chip">
+                                ${propiedad.area}
+                            </span>
+
+                            <span class="chip">
+                                ${propiedad.operacion}
+                            </span>
+
+                        </div>
+
+
+                        <strong>
+                            Ver propiedad →
+                        </strong>
+
+                    </div>
+
+                </a>
+
+            `;
+
+        }
+
+
+        /* ========================================
+           MENSAJE SIN RESULTADOS
+        ======================================== */
+
+        function mostrarVacio(provincia) {
+
+            const mensajeProvincia =
+                provincia === 'Todas'
+                    ? 'esta categoría'
+                    : provincia;
+
+
+            grid.innerHTML = `
+
+                <div class="empty">
+
+                    <strong>
+                        No encontramos propiedades disponibles
+                        en ${mensajeProvincia}.
+                    </strong>
+
+
+                    <p>
+
+                        ${
+                            provincia === 'Todas'
+
+                                ? 'Actualmente no hay propiedades disponibles en esta categoría.'
+
+                                : 'Prueba seleccionando otra provincia o explora otras categorías.'
+                        }
+
+                    </p>
+
+
+                    <div
+                        class="actions"
+                        style="justify-content:center;"
+                    >
+
+                        ${
+                            provincia !== 'Todas'
+
+                                ? `
+
+                                    <button
+                                        class="btn btn-dark"
+                                        type="button"
+                                        id="showAllProvinces"
+                                    >
+                                        Ver todas las provincias
+                                    </button>
+
+                                `
+
+                                : `
+
+                                    <a
+                                        class="btn btn-dark"
+                                        href="index.html#categorias"
+                                    >
+                                        Ver todas las categorías
+                                    </a>
+
+                                `
+                        }
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            const showAllButton =
+                document.getElementById(
+                    'showAllProvinces'
+                );
+
+
+            if (showAllButton) {
+
+                showAllButton.addEventListener(
+                    'click',
+                    () => {
+
+                        provinceSelect.value =
+                            'Todas';
+
+                        mostrarPropiedades();
+
+                    }
+                );
+
+            }
+
+        }
+
+
+        /* ========================================
+           MOSTRAR / FILTRAR PROPIEDADES
+        ======================================== */
+
+        function mostrarPropiedades() {
+
+            const provinciaSeleccionada =
+                provinceSelect.value;
+
+
+            let propiedadesFiltradas =
+                propiedadesCategoria;
+
+
+            /* =====================================
+               FILTRAR POR PROVINCIA
+            ====================================== */
+
+            if (
+                provinciaSeleccionada !== 'Todas'
+            ) {
+
+                propiedadesFiltradas =
+                    propiedadesCategoria.filter(
+                        propiedad =>
+                            propiedad.provincia ===
+                            provinciaSeleccionada
+                    );
+
+            }
+
+
+            /* =====================================
+               TEXTO DEL RESULTADO
+            ====================================== */
+
+            if (
+                provinciaSeleccionada === 'Todas'
+            ) {
+
+                filterResult.textContent =
+                    propiedadesFiltradas.length +
+                    (
+                        propiedadesFiltradas.length === 1
+
+                            ? ' propiedad encontrada'
+
+                            : ' propiedades encontradas'
+                    );
+
+            } else {
+
+                filterResult.textContent =
+                    propiedadesFiltradas.length +
+                    (
+                        propiedadesFiltradas.length === 1
+
+                            ? ' propiedad en '
+
+                            : ' propiedades en '
+                    ) +
+                    provinciaSeleccionada;
+
+            }
+
+
+            /* =====================================
+               MOSTRAR TARJETAS
+            ====================================== */
+
+            if (
+                propiedadesFiltradas.length > 0
+            ) {
+
+                grid.innerHTML =
+                    propiedadesFiltradas
+                        .map(crearTarjeta)
+                        .join('');
+
+            } else {
+
+                mostrarVacio(
+                    provinciaSeleccionada
+                );
+
+            }
+
+        }
+
+
+        /* ========================================
+           CAMBIO DE PROVINCIA
+        ======================================== */
+
+        provinceSelect.addEventListener(
+            'change',
+            mostrarPropiedades
+        );
+
+
+        /* ========================================
+           PRIMERA CARGA
+        ======================================== */
+
+        mostrarPropiedades();
+
+
+        /* ========================================
+           MENÚ MÓVIL
+        ======================================== */
+
+        const menuBtn =
+            document.getElementById(
+                'menuBtn'
+            );
+
+
+        const nav =
+            document.getElementById(
+                'nav'
+            );
+
+
+        if (menuBtn && nav) {
+
+            menuBtn.addEventListener(
+                'click',
+                () => {
+
+                    nav.classList.toggle(
+                        'open'
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ========================================
+           AÑO AUTOMÁTICO
+        ======================================== */
+
+        const year =
+            document.getElementById(
+                'year'
+            );
+
+
+        if (year) {
+
+            year.textContent =
+                new Date().getFullYear();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

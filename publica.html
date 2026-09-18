@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Publica tu propiedad | Altamar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+    <header class="header">
+
+        <a class="brand" href="index.html">
+            <span class="brand-mark">A</span>
+
+            <span>
+                <strong>ALTAMAR</strong>
+                <small>Real Estate</small>
+            </span>
+        </a>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Menú"
+        >
+            ☰
+        </button>
+
+            <nav class="nav" id="nav">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="index.html#categorias">
+                Propiedades
+            </a>
+
+            <a href="publica.html">
+                Publica tu propiedad
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+    <main>
+
+        <!-- ENCABEZADO -->
+        <section class="page-head">
+
+            <div class="inner">
+
+                <span class="kicker">
+                    PARA PROPIETARIOS
+                </span>
+
+                <h1 class="page-title">
+                    Publica tu propiedad.
+                </h1>
+
+                <p class="lead">
+                    Completa la información básica de tu propiedad.
+                    La solicitud será enviada de forma privada para
+                    evaluación y seguimiento.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FORMULARIO
+        ====================================== -->
+        <section class="section">
+
+            <div class="inner two-col">
+
+                <!-- INFORMACIÓN -->
+                <div>
+
+                    <span class="kicker">
+                        TU PROPIEDAD
+                    </span>
+
+                    <h2>
+                        Cuéntanos sobre tu inmueble.
+                    </h2>
+
+                    <p class="lead">
+                        No necesitas tener todos los datos perfectos.
+                        Con esta información inicial podremos conocer
+                        mejor la propiedad y posteriormente contactarte.
+                    </p>
+
+                    <div class="notice">
+                        La información enviada mediante este formulario
+                        será utilizada únicamente para evaluar la propiedad
+                        y establecer contacto con el propietario.
+                    </div>
+
+                </div>
+
+
+                <!-- FORMULARIO -->
+                <form
+                    class="form-card"
+                    name="publicar-propiedad"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    id="propertyForm"
+                >
+
+                    <input
+                        type="hidden"
+                        name="form-name"
+                        value="publicar-propiedad"
+                    >
+
+                    <p hidden>
+                        <label>
+                            No llenar este campo:
+                            <input name="bot-field">
+                        </label>
+                    </p>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NOMBRE -->
+                        <div class="field">
+
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
+                            <input
+                                id="nombre"
+                                name="nombre"
+                                type="text"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TELÉFONO -->
+                        <div class="field">
+
+                            <label for="telefono">
+                                Teléfono / WhatsApp
+                            </label>
+
+                            <input
+                                id="telefono"
+                                name="telefono"
+                                type="tel"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CORREO -->
+                        <div class="field">
+
+                            <label for="email">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+
+                        <!-- TIPO DE PROPIEDAD -->
+                        <div class="field">
+
+                            <label for="tipo">
+                                Tipo de propiedad
+                            </label>
+
+                            <select
+                                id="tipo"
+                                name="tipo"
+                                required
+                            >
+
+                                <option value="" selected disabled>
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="Apartamento">
+                                    Apartamento
+                                </option>
+
+                                <option value="Casa">
+                                    Casa
+                                </option>
+
+                                <option value="Airbnb">
+                                    Airbnb
+                                </option>
+
+                                <option value="Lote / terreno">
+                                    Lote / terreno
+                                </option>
+
+                                <option value="Otro">
+                                    Otro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- OBJETIVO -->
+                        <div class="field">
+
+                            <label for="objetivo">
+                                ¿Qué deseas hacer?
+                            </label>
+
+                            <select
+                                id="objetivo"
+                                name="objetivo"
+                                required
+                            >
+
+                                <option value="" selected disabled>
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="Vender">
+                                    Vender
+                                </option>
+
+                                <option value="Alquilar">
+                                    Alquilar
+                                </option>
+
+                                <option value="Alquiler temporal">
+                                    Alquiler temporal
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- UBICACIÓN -->
+                        <div class="field">
+
+                            <label for="ubicacion">
+                                Ubicación
+                            </label>
+
+                            <input
+                                id="ubicacion"
+                                name="ubicacion"
+                                type="text"
+                                placeholder="Ej. Costa del Este, Panamá"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- METROS -->
+                        <div class="field">
+
+                            <label for="metros">
+                                Metros cuadrados
+                            </label>
+
+                            <input
+                                id="metros"
+                                name="metros"
+                                type="number"
+                                min="0"
+                                placeholder="Ej. 120"
+                            >
+
+                        </div>
+
+
+                        <!-- HABITACIONES -->
+                        <div class="field">
+
+                            <label for="habitaciones">
+                                Habitaciones
+                            </label>
+
+                            <input
+                                id="habitaciones"
+                                name="habitaciones"
+                                type="number"
+                                min="0"
+                                placeholder="Ej. 3"
+                            >
+
+                        </div>
+
+
+                        <!-- BAÑOS -->
+                        <div class="field">
+
+                            <label for="banos">
+                                Baños
+                            </label>
+
+                            <input
+                                id="banos"
+                                name="banos"
+                                type="number"
+                                min="0"
+                                placeholder="Ej. 2"
+                            >
+
+                        </div>
+
+
+                        <!-- ESTACIONAMIENTOS -->
+                        <div class="field">
+
+                            <label for="estacionamientos">
+                                Estacionamientos
+                            </label>
+
+                            <input
+                                id="estacionamientos"
+                                name="estacionamientos"
+                                type="number"
+                                min="0"
+                                placeholder="Ej. 2"
+                            >
+
+                        </div>
+
+
+                        <!-- AMENIDADES -->
+                        <div class="field full">
+
+                            <label for="amenidades">
+                                Amenidades / características
+                            </label>
+
+                            <input
+                                id="amenidades"
+                                name="amenidades"
+                                type="text"
+                                placeholder="Piscina, gimnasio, área social..."
+                            >
+
+                        </div>
+
+
+                        <!-- COMENTARIOS -->
+                        <div class="field full">
+
+                            <label for="comentarios">
+                                Información adicional
+                            </label>
+
+                            <textarea
+                                id="comentarios"
+                                name="comentarios"
+                                placeholder="Cuéntanos cualquier detalle adicional sobre la propiedad..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- BOTÓN -->
+                        <div class="field full">
+
+                            <button
+                                class="btn btn-dark"
+                                type="submit"
+                                id="submitBtn"
+                            >
+                                Enviar propiedad
+                            </button>
+
+                            <div
+                                id="formMessage"
+                                role="status"
+                                aria-live="polite"
+                                style="display:none; margin-top:18px; padding:18px; border-radius:14px;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="footer">
+
+        <div class="inner">
+
+            <div class="brand">
+
+                <span class="brand-mark">
+                    A
+                </span>
+
+                <span>
+                    <strong>ALTAMAR</strong>
+                    <small>Real Estate</small>
+                </span>
+
+            </div>
+
+            <p>
+                Demo comercial ·
+                <span id="year"></span>
+                · Venta, alquiler y promoción de propiedades.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+    <script>
+
+        /* Menú móvil */
+        const menuBtn = document.getElementById('menuBtn');
+        const nav = document.getElementById('nav');
+
+        if (menuBtn) {
+            menuBtn.onclick = () => {
+                nav.classList.toggle('open');
+            };
+        }
+
+
+        /* Año automático */
+        const year = document.getElementById('year');
+
+        if (year) {
+            year.textContent = new Date().getFullYear();
+        }
+
+
+        /* Envío del formulario con Netlify Forms */
+        const propertyForm = document.getElementById('propertyForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        function encodeFormData(formData) {
+            return new URLSearchParams(formData).toString();
+        }
+
+        if (propertyForm) {
+            propertyForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+                formMessage.style.display = 'none';
+
+                try {
+                    const formData = new FormData(propertyForm);
+
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: encodeFormData(formData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo enviar el formulario.');
+                    }
+
+                    propertyForm.reset();
+
+                    formMessage.innerHTML = `
+                        <strong>✓ Solicitud recibida</strong><br>
+                        Gracias por compartir tu propiedad. Hemos recibido la información correctamente
+                        y será revisada para darle seguimiento.
+                    `;
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#eef8f0';
+                    formMessage.style.border = '1px solid #b8ddc0';
+
+                    formMessage.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                } catch (error) {
+                    console.error('Error enviando formulario:', error);
+
+                    formMessage.innerHTML = `
+                        <strong>No pudimos enviar la solicitud.</strong><br>
+                        Inténtalo nuevamente en unos momentos.
+                    `;
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#fff3f3';
+                    formMessage.style.border = '1px solid #e4b8b8';
+
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar propiedad';
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
